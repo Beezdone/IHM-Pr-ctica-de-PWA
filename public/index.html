@@ -1,0 +1,73 @@
+<!--
+
+  References: 
+  https://www.youtube.com/watch?v=0cfCnSPwHtM 
+  https://www.youtube.com/watch?v=TouxMO1v7qE 
+  https://www.youtube.com/watch?v=h_ozUVUD3rI 
+  https://www.youtube.com/watch?v=WPO_V1_3Vjg 
+  https://www.youtube.com/watch?v=OnE1XZ2cCmY 
+
+  https://web.dev/viewport/ 
+  https://web.dev/responsive-web-design-basics/ 
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en"> <!-- Adición de la lengua  -->
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--Cambios-->
+
+  <meta name="viewport" content="initial-scale=1, maximum-scale=5">
+  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="un juego de disparos"/>
+  <meta name="theme-color" content="#F0BD94"/>
+  <meta name="apple-mobile-web-app-title" content="JdD"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
+  <link rel="apple-touch-icon" href="assets/bueno.png">
+  <meta http-equiv="refresh">
+
+  <!--Fin de los cambios-->
+
+  <title>Shooter Game</title>
+  <link type="text/css" rel="stylesheet" href="game.css">
+  <meta name="viewport" content="user-scalable=0"/>
+  <script src="Game.js" type="text/javascript"></script>
+  <script src="Entity.js" type="text/javascript"></script>
+  <script src="Character.js" type="text/javascript"></script>
+  <script src="Player.js" type="text/javascript"></script>
+  <script src="Opponent.js" type="text/javascript"></script>
+  <script src="Shot.js" type="text/javascript"></script>
+  <script src="main.js" type="text/javascript"></script>
+  
+</head>
+
+<body>
+  <button id="pause" class="gamebutton" onclick="this.blur();">Pausa</button>
+  <button id="reset" class="gamebutton" onclick="this.blur();">NUEVA PARTIDA</button>
+
+  <!-- Service Worker -->
+  <script>
+
+    if('serviceWorker' in navigator) {
+      window.addEventListener('load', ()=> {
+        navigator.serviceWorker.register('service-worker.js').then((reg)=>{
+          console.log("Service worker registered", reg);
+        })
+      })
+    }
+
+  </script>
+
+  <!-- Install the PWA -->
+  <button id="butInstall" class="gamebutton" aria-label="Install" hidden>INSTALAR LA APLICACION...</button>
+  <div id="main"> <!-- La vista se incluye aquí --> </div>
+  <script src="install.js"></script>
+
+</body>
+
+</html>
